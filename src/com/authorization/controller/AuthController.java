@@ -15,8 +15,8 @@ import com.wrapper.spotify.models.AuthorizationCodeCredentials;
  
 @Controller
 public class AuthController {
-	public static final String clientId = "clientId";
-    public static final String clientSecret = "clientSecret";
+	public static final String clientId = "f51aba0d64d444d3b91fa0654e5f6e7f";
+    public static final String clientSecret = "363647ac2286445c84f7d4687e8144fc";
     public static final String redirectURI = "http://localhost:8080/ChorizoDos/callback";
 	
     
