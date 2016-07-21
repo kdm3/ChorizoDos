@@ -12,62 +12,63 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.models.AuthorizationCodeCredentials;
- 
+
 @Controller
 public class AuthController {
 	public static final String clientId = "clientId";
-    public static final String clientSecret = "clientSecret";
-    public static final String redirectURI = "http://localhost:8080/ChorizoDos/callback";
-	
-    
-    @RequestMapping(value="/init")
-    public ModelAndView initAuth() {
-		final Api api = Api.builder()
-                .clientId(clientId)
-                .clientSecret(clientSecret)
-                .redirectURI(redirectURI)
-                .build();
+	public static final String clientSecret = "clientSecret";
+	public static final String redirectURI = "http://localhost:8080/ChorizoDos/callback";
 
-        final List<String> scopes = Arrays.asList("user-read-private", "user-read-email", "playlist-read-private", "playlist-modify-private");
+	@RequestMapping(value = "/init")
+	public ModelAndView initAuth() {
+		final Api api = Api.builder().clientId(clientId).clientSecret(clientSecret).redirectURI(redirectURI).build();
 
-        // pass a user-identifiable string using state variable
-        final String state = "someExpectedStateString";
+		final List<String> scopes = Arrays.asList("user-read-private", "user-read-email", "playlist-read-private",
+				"playlist-modify-private");
 
-        String authorizeURL = api.createAuthorizeURL(scopes, state);
+		// pass a user-identifiable string using state variable
+		final String state = "someExpectedStateString";
 
-        return new ModelAndView("redirect:" + authorizeURL);
+		String authorizeURL = api.createAuthorizeURL(scopes, state);
+
+		return new ModelAndView("redirect:" + authorizeURL);
 	}
-	
-    @RequestMapping(value="/callback")
-	public ModelAndView myCallback(@RequestParam("code") String code, @RequestParam("state") String state, Model model) {
 
-        final Api api = Api.builder()
-                .clientId(clientId)
-                .clientSecret(clientSecret)
-                .redirectURI(redirectURI)
-                .build();
-String token= null;
-        try {
-            final AuthorizationCodeCredentials authorizationCodeCredentials = api.authorizationCodeGrant(code).build().get();
+	@RequestMapping(value = "/callback")
+	public ModelAndView myCallback(@RequestParam("code") String code, @RequestParam("state") String state,
+			Model model) {
 
-            System.out.println("State: " + state);
-            System.out.println("Successfully retrieved an access token! " + authorizationCodeCredentials.getAccessToken());
-            System.out.println("The access token expires in " + authorizationCodeCredentials.getExpiresIn() + " seconds");
-            System.out.println("Luckily, I can refresh it using this refresh token! " + authorizationCodeCredentials.getRefreshToken());
+		final Api api = Api.builder().clientId(clientId).clientSecret(clientSecret).redirectURI(redirectURI).build();
+		String token = null;
+		String rtoken =null;
+		try {
+			final AuthorizationCodeCredentials authorizationCodeCredentials = api.authorizationCodeGrant(code).build()
+					.get();
 
-            api.setAccessToken(authorizationCodeCredentials.getAccessToken());
-            api.setRefreshToken(authorizationCodeCredentials.getRefreshToken());
-            
-            token=authorizationCodeCredentials.getAccessToken();
-            System.out.println("This is the Token:" + token);
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-       model.addAttribute("token", token);
-       
-        //return "/spotify/initAuth";
-       return new ModelAndView("/initAuth");
-    }
-			
+			System.out.println("State: " + state);
+			System.out.println(
+					"Successfully retrieved an access token! " + authorizationCodeCredentials.getAccessToken());
+			System.out
+					.println("The access token expires in " + authorizationCodeCredentials.getExpiresIn() + " seconds");
+			System.out.println("Luckily, I can refresh it using this refresh token! "
+					+ authorizationCodeCredentials.getRefreshToken());
+
+			api.setAccessToken(authorizationCodeCredentials.getAccessToken());
+			api.setRefreshToken(authorizationCodeCredentials.getRefreshToken());
+
+			token = authorizationCodeCredentials.getAccessToken();
+			rtoken = authorizationCodeCredentials.getRefreshToken();
+			System.out.println("This is the Token:" + token);
+			System.out.println("This is the Refresh Token:" + rtoken);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		model.addAttribute("token", token);
+		model.addAttribute("rtoken", rtoken);
+		
+		// return "/spotify/initAuth";
+		return new ModelAndView("/initAuth");
 	}
-			
+
+}
