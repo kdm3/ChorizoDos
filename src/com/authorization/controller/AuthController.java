@@ -17,7 +17,7 @@ import com.wrapper.spotify.models.AuthorizationCodeCredentials;
 public class AuthController {
 	public static final String clientId = "clientId";
 	public static final String clientSecret = "clientSecret";
-	public static final String redirectURI = "http://localhost:8080/ChorizoDos/callback";
+	public static final String redirectURI = "http://chorizo-env.us-west-2.elasticbeanstalk.com/callback";
 
 	@RequestMapping(value = "/init")
 	public ModelAndView initAuth() {
