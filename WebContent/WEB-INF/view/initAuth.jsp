@@ -8,13 +8,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Chorizo- Playlist Builder</title>
 <style>
+body {
+	background-color: #3e94ec;
+	font-family: "Roboto", helvetica, arial, sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	text-rendering: optimizeLegibility;
+	color: white;
+}
+
 form {
 	width: 500px;
 	margin: 0 auto;
 }
 
-h2 {
-	margin: 0 auto;
+h1, h2, p {
+	margin: 25px auto;
 	width: 50%;
 	text-align: center;
 }
@@ -29,6 +38,7 @@ iframe {
 	margin-left: 25%;
 	margin-top: 0;
 	padding: 0;
+	text-align: center;
 }
 
 table {
@@ -39,47 +49,46 @@ table {
 
 td {
 	border: 1px solid black;
+	padding: 5px;
 }
 </style>
 </head>
 <body>
-	<center>
-		<h1>Chorizo</h1>
-		<p>Build a playlist by choosing a category or artist and the
-			amount of time you want that choice to be played.</p>
-		<form id="inputForm">
-			Category: <select name="songName">
-				<option value="country">Country</option>
-				<option value="workout">Workout</option>
-				<option value="pop">Pop</option>
-				<option value="mood">Mood</option>
-				<option value="focus">Focus</option>
-				<option value="sleep">Sleep</option>
-				<option value="dinner">Dinner</option>
-				<option value="kids">Kids</option>
-				<option value="reggae">Reggae</option>
-				<option value="rock">Rock</option>
-				<option value="indie-alt">Indi</option>
-				<option value="chill">Chill</option>
-				<option value="hiphop">Hip-Hop</option>
-				<option value="rnb">RnB</option>
-				<option value="folk_americana">Folk_Americana</option>
-				<option value="metal">Metal</option>
-				<option value="soul">Soul</option>
-				<option value="travel">Travel</option>
-				<option value="jazz">Jazz</option>
-				<option value="latin">Latin</option>
-				<option value="punk">Punk</option>
-				<option value="funk">Funk</option>
-				<option value="classical">Classical</option>
-			</select>
-			<!--  <input type="text" name="songName"></input><br>-->
-			Number: <input type="text" name="amount"></input>
-			<button onclick='loadDoc(songName.value, amount.value)' type="button">Submit</button>
-		</form>
-		<div id="here"></div>
-		<div id="playList"></div>
-	</center>
+	<h1>Chorizo</h1><h2>Dynammic Playlist Builder</h2><hr>
+	<p>Build a playlist by choosing a category or artist and the amount
+		of time you want that choice to be played.</p>
+	<form id="inputForm">
+		Category: <select name="songName">
+			<option value="country">Country</option>
+			<option value="workout">Workout</option>
+			<option value="pop">Pop</option>
+			<option value="mood">Mood</option>
+			<option value="focus">Focus</option>
+			<option value="sleep">Sleep</option>
+			<option value="dinner">Dinner</option>
+			<option value="kids">Kids</option>
+			<option value="reggae">Reggae</option>
+			<option value="rock">Rock</option>
+			<option value="indie-alt">Indie</option>
+			<option value="chill">Chill</option>
+			<option value="hiphop">Hip-Hop</option>
+			<option value="rnb">RnB</option>
+			<option value="folk_americana">Folk_Americana</option>
+			<option value="metal">Metal</option>
+			<option value="soul">Soul</option>
+			<option value="travel">Travel</option>
+			<option value="jazz">Jazz</option>
+			<option value="latin">Latin</option>
+			<option value="punk">Punk</option>
+			<option value="funk">Funk</option>
+			<option value="classical">Classical</option>
+		</select>
+		<!--  <input type="text" name="songName"></input><br>-->
+		Number: <input type="text" name="amount"></input>
+		<button onclick='loadDoc(songName.value, amount.value)' type="button">Submit</button>
+	</form>
+	<div id="here"></div>
+	<div id="playList"></div>
 	<script>
 		printFrame = false;
 		trackList = "";
@@ -109,7 +118,7 @@ td {
 					+ category + "/playlists", true);
 			xhttp.setRequestHeader("Authorization", "Bearer " + "${token}");
 			xhttp.send();
-			var tr = document.createElement("tr");
+			tr = document.createElement("tr");
 			table.insertBefore(tr, table.firstChild);
 			table.firstChild.innerHTML = "<th>Song Name</th><th>Artist</th>";
 			//insert iframe here
@@ -123,7 +132,7 @@ td {
 			xhttp.onreadystatechange = function() {
 				if (xhttp.readyState == 4 && xhttp.status == 200) {
 					if (trackList != "") {
-						trackList += ","
+						trackList += ",";
 					}
 					var playlist = JSON.parse(xhttp.responseText);
 					var rand = parseInt(Math.random() * playlist.items.length
