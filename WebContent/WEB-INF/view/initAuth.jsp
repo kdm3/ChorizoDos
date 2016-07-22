@@ -63,7 +63,7 @@ td {
 				<option value="chill">Chill</option>
 				<option value="hiphop">Hip-Hop</option>
 				<option value="rnb">RnB</option>
-				<option value="folk-americana">Folk-Americana</option>
+				<option value="folk_americana">Folk_Americana</option>
 				<option value="metal">Metal</option>
 				<option value="soul">Soul</option>
 				<option value="travel">Travel</option>
