@@ -53,9 +53,28 @@ td {
 				<option value="workout">Workout</option>
 				<option value="pop">Pop</option>
 				<option value="mood">Mood</option>
+				<option value="focus">Focus</option>
+				<option value="sleep">Sleep</option>
+				<option value="dinner">Dinner</option>
+				<option value="kids">Kids</option>
+				<option value="reggae">Reggae</option>
+				<option value="rock">Rock</option>
+				<option value="indie-alt">Indi</option>
+				<option value="chill">Chill</option>
+				<option value="hiphop">Hip-Hop</option>
+				<option value="rnb">RnB</option>
+				<option value="folk-americana">Folk-Americana</option>
+				<option value="metal">Metal</option>
+				<option value="soul">Soul</option>
+				<option value="travel">Travel</option>
+				<option value="jazz">Jazz</option>
+				<option value="latin">Latin</option>
+				<option value="punk">Punk</option>
+				<option value="funk">Funk</option>
+				<option value="classical">Classical</option>
 			</select>
 			<!--  <input type="text" name="songName"></input><br>-->
-			Number of Songs: <input type="text" name="amount"></input>
+			Number: <input type="text" name="amount"></input>
 			<button onclick='loadDoc(songName.value, amount.value)' type="button">Submit</button>
 		</form>
 		<div id="here"></div>
