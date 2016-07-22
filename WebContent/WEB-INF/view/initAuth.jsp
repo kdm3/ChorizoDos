@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,22 +7,64 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Chorizo- Playlist Builder</title>
+<style>
+form {
+	width: 500px;
+	margin: 0 auto;
+}
+
+h2 {
+	margin: 0 auto;
+	width: 50%;
+	text-align: center;
+}
+
+#playList {
+	width: 500px;
+	margin: 0 auto;
+}
+
+iframe {
+	width: 50%;
+	margin-left: 25%;
+	margin-top: 0;
+	padding: 0;
+}
+
+table {
+	width: 700px;
+	margin: 25px auto;
+	border-spacing: 0;
+}
+
+td {
+	border: 1px solid black;
+}
+</style>
 </head>
 <body>
 	<center>
 		<h1>Chorizo</h1>
 		<p>Build a playlist by choosing a category or artist and the
 			amount of time you want that choice to be played.</p>
-		<form>
-			Band Name: <input type="text" name="songName"></input><br>
-			Amount of Songs: <input type="text" name="amount"></input>
-			<button onclick='loadDoc(songName.value, amount.value)' id="addSongs"
-				type="button">Submit</button>
+		<form id="inputForm">
+			Category: <select name="songName">
+				<option value="country">Country</option>
+				<option value="workout">Workout</option>
+				<option value="pop">Pop</option>
+				<option value="mood">Mood</option>
+			</select>
+			<!--  <input type="text" name="songName"></input><br>-->
+			Number of Songs: <input type="text" name="amount"></input>
+			<button onclick='loadDoc(songName.value, amount.value)' type="button">Submit</button>
 		</form>
 		<div id="here"></div>
+		<div id="playList"></div>
 	</center>
 	<script>
-		var gotTracks = false;
+		printFrame = false;
+		trackList = "";
+
 		function loadDoc(category, num) {
 			//if no table exists, create it
 			if (document.getElementsByTagName("table").length < 1) {
@@ -41,20 +83,29 @@
 						getTracks(jsonObj.playlists.items[rand1]);
 					}
 				} else {
-					console.log("bad playlist request");
+					//console.log("bad playlist request");
 				}
 			};
 			xhttp.open("GET", "https://api.spotify.com/v1/browse/categories/"
 					+ category + "/playlists", true);
 			xhttp.setRequestHeader("Authorization", "Bearer " + "${token}");
 			xhttp.send();
+			var tr = document.createElement("tr");
+			table.insertBefore(tr, table.firstChild);
+			table.firstChild.innerHTML = "<th>Song Name</th><th>Artist</th>";
+			//insert iframe here
+			console.log(trackList);
 		}
 		function getTracks(playlist) {
 			/*if (gotTracks)
 				return;*/
+			var playFrame = document.getElementById("playList");
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 				if (xhttp.readyState == 4 && xhttp.status == 200) {
+					if (trackList != "") {
+						trackList += ","
+					}
 					var playlist = JSON.parse(xhttp.responseText);
 					var rand = parseInt(Math.random() * playlist.items.length
 							- 1);
@@ -62,11 +113,17 @@
 					var tr = document.createElement("tr");
 					var table = document.getElementsByTagName("table")[0];
 					table.appendChild(tr);
-					tr.appendChild(document
-							.createTextNode(playlist.items[rand].track.name));
-
+					table.lastChild.innerHTML = "<td>"
+							+ playlist.items[rand].track.name + "</td><td>"
+							+ playlist.items[rand].track.artists[0].name
+							+ "</td>";
+					var split = playlist.items[rand].track.uri.split(":");
+					trackList += split[2];
+					playFrame.innerHTML = "<br><iframe src=\"https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:"
+							+ trackList
+							+ "\" frameborder=\"0\" allowtransparency=\"true\"></iframe>";
 				} else {
-					console.log("these tracks don't exist");
+					//console.log("these tracks don't exist");
 				}
 			};
 
