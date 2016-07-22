@@ -69,7 +69,7 @@ td {
 			<option value="kids">Kids</option>
 			<option value="reggae">Reggae</option>
 			<option value="rock">Rock</option>
-			<option value="indie-alt">Indie</option>
+			<option value="indie_alt">Indie</option>
 			<option value="chill">Chill</option>
 			<option value="hiphop">Hip-Hop</option>
 			<option value="rnb">RnB</option>
