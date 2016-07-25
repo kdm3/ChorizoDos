@@ -3,16 +3,16 @@ package com.chorizoinfo.hibernate;
 public class Playlists {
 	private int id;
 	private String playlistname;
-	private String playlisthref;
+	private String trackList;
 	private int userid;
 	
 	public Playlists(){
 		
 	}
-	 public Playlists (String playlistname, String playlisthref, int userid){
+	 public Playlists (String playlistname, String trackList, int userid){
 		 this.playlistname=playlistname;
-		 this.playlisthref=playlisthref;
-		 this.setUserid(userid);
+		 this.trackList=trackList;
+		 this.userid=userid;
 	 }
 	
 	/**
@@ -30,8 +30,8 @@ public class Playlists {
 	/**
 	 * @return the playlisthref
 	 */
-	public String getPlaylisthref() {
-		return playlisthref;
+	public String getTrackList() {
+		return trackList;
 	}
 	/**
 	 * @param id the id to set
@@ -48,8 +48,8 @@ public class Playlists {
 	/**
 	 * @param playlisthref the playlisthref to set
 	 */
-	public void setPlaylisthref(String playlisthref) {
-		this.playlisthref = playlisthref;
+	public void setTrackList(String trackList) {
+		this.trackList = trackList;
 	}
 	public int getUserid() {
 		return userid;

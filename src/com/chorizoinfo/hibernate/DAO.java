@@ -39,7 +39,7 @@ public class DAO {
 		 factory = configuration.buildSessionFactory(serviceRegistry);
 
 	}
-	
+	/*
 	public static int addUser(Users u) {
 		if (factory == null)
 			setupFactory();
@@ -59,7 +59,7 @@ public class DAO {
 				    
 		 return i;  
 	}
-	
+	*/
 	public static int addPlaylist(Playlists p){
 		if (factory == null)
 			setupFactory();
@@ -80,7 +80,7 @@ public class DAO {
 		 return i;
 		
 	}
-	
+	/*
 	public static List<Playlists> getAllPlaylists(){
 		if (factory == null)
 			setupFactory();
@@ -100,8 +100,8 @@ public class DAO {
       	System.out.println(playlistnames.size());	    
 		return playlistnames;
 		
-	}
-	public static List<Playlists> getUserPlaylist(int uid){
+	}*/
+	public static List<Playlists> getUserPlaylist(String userid){
 		if (factory == null)
 			setupFactory();
 		 // Get current session
@@ -110,16 +110,16 @@ public class DAO {
 		 // Begin transaction
 		 hibernateSession.getTransaction().begin();
 		 
-		 String qry = "FROM Playlists WHERE user_id=" + uid;
+		 String qry = "FROM Playlists WHERE user_id=" + userid;
 		 //deprecated method & unsafe cast
-         List<Playlists> playlisthref = hibernateSession.createQuery(qry).list(); 
+         List<Playlists> playList = hibernateSession.createQuery(qry).list(); 
 		 
          // Commit transaction
          hibernateSession.getTransaction().commit();
       		 
       	 hibernateSession.close();  
-      	System.out.println(playlisthref.size());	    
-		return playlisthref;
+      	System.out.println(playList.size());	    
+		return playList;
 		
 	}
 }

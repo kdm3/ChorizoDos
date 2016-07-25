@@ -13,8 +13,22 @@
 	margin: 0 auto;
 }
 
+#submitForm{
+	
+	padding: 15px;	
+	margin-top: 50px;
+	margin-left: 25%;
+	width: 50%;
+	border: 1px solid white;
+	border-radius: 25px;
+}
+
 #submitForm button {
 	margin-top: 25px;
+}
+
+#submitForm input{
+	margin: 15px;
 }
 
 h1, h2, p {
@@ -119,6 +133,7 @@ p span {
 		</div>
 		<div id="playList"></div>
 		<form id="submitForm" method="post" action="saveplaylist.jsp">
+			<center>Playlist Name: <input type="text" name="playlistName" /></center>
 			<input id="hiddenField" name="trackList" type="hidden"
 				value="secret data goes here" />
 			<!--  <input id="holdDuration"	name="holdDuration" type="hidden"/> -->
@@ -151,8 +166,10 @@ p span {
 			xhttp.onreadystatechange = function() {
 				if (xhttp.readyState == 4 && xhttp.status == 200) {
 					var jsonObj = JSON.parse(xhttp.responseText);
+					
 					//this loop controls how many songs will be grabbed.
 					//need to get duration of songs and compare them to num
+					//would not increment in for() format
 					for (var i = 0; i < num; i++) {
 						//random number used to grab random playlist by index value
 						var rand1 = parseInt(Math.random()
@@ -160,6 +177,8 @@ p span {
 						
 						//getTracks method passes a playlist
 						getTracks(jsonObj.playlists.items[rand1]);
+						
+						//i += durationOfCurrentSong;
 					}
 				} else {
 					console.log("bad playlist request");
