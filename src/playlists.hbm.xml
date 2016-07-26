@@ -9,9 +9,9 @@
             <generator class="native"/>
         </id>
         <property name="playlistname" column="playlistname" type="string"></property>  
-		 <property name="playlisthref" column="playlisthref" type="string"></property>  
+		 <property name="trackList" column="playlisthref" type="string"></property>  
          
-        <property name="userid" type="int" column="user_id" not-null="true"></property>  
+        <property name="userid" type="string" column="user_id" not-null="true"></property>  
 	 </class>      
  </hibernate-mapping>  
  

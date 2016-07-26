@@ -2,14 +2,12 @@ package com.chorizoinfo.hibernate;
 
 
 import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-
-import com.chorizoinfo.hibernate.Users;
-import com.chorizoinfo.hibernate.Playlists;
 
 
 
@@ -101,7 +99,7 @@ public class DAO {
 		return playlistnames;
 		
 	}
-	public static List<Playlists> getUserPlaylist(int uid){
+	public static List<Playlists> getUserPlaylist(String userid){
 		if (factory == null)
 			setupFactory();
 		 // Get current session
@@ -110,16 +108,16 @@ public class DAO {
 		 // Begin transaction
 		 hibernateSession.getTransaction().begin();
 		 
-		 String qry = "FROM Playlists WHERE user_id=" + uid;
+		 String qry = "FROM Playlists WHERE user_id=" + userid;
 		 //deprecated method & unsafe cast
-         List<Playlists> playlisthref = hibernateSession.createQuery(qry).list(); 
+         List<Playlists> playlist = hibernateSession.createQuery(qry).list(); 
 		 
          // Commit transaction
          hibernateSession.getTransaction().commit();
       		 
       	 hibernateSession.close();  
-      	System.out.println(playlisthref.size());	    
-		return playlisthref;
+      	System.out.println(playlist.size());	    
+		return playlist;
 		
 	}
 }

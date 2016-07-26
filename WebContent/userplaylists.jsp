@@ -20,11 +20,11 @@
 
 <table>
 <%  
-List<Playlists> playlists = DAO.getUserPlaylist(3); 
+List<Playlists> playlists = DAO.getUserPlaylist(userid); 
 
 for (Playlists p: playlists) {
 	out.println ("<tr><td>" + p.getPlaylistname() + "</td><td>" +
-		p.getPlaylisthref() + "</td><</tr>");
+		p.getTrackList() + "</td><</tr>");
 }
 %>  
 </table>
