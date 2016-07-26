@@ -183,7 +183,6 @@ td {
 		trackList = "";
 
 		function loadDoc() {
-			
 			//get text boxes
 			var category = document.getElementById("songName").value;
 			var num = document.getElementById("songNum").value;

@@ -110,7 +110,7 @@ public class DAO {
 		 // Begin transaction
 		 hibernateSession.getTransaction().begin();
 		 
-		 String qry = "FROM Playlists WHERE user_id=" + userid;
+		 String qry = "FROM Playlists WHERE userid='" + userid + "'";
 		 //deprecated method & unsafe cast
          List<Playlists> playList = hibernateSession.createQuery(qry).list(); 
 		 
