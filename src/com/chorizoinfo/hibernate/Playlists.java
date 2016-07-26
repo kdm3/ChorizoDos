@@ -4,12 +4,12 @@ public class Playlists {
 	private int id;
 	private String playlistname;
 	private String trackList;
-	private int userid;
+	private String userid;
 	
 	public Playlists(){
 		
 	}
-	 public Playlists (String playlistname, String trackList, int userid){
+	 public Playlists (String playlistname, String trackList, String userid){
 		 this.playlistname=playlistname;
 		 this.trackList=trackList;
 		 this.userid=userid;
@@ -51,10 +51,10 @@ public class Playlists {
 	public void setTrackList(String trackList) {
 		this.trackList = trackList;
 	}
-	public int getUserid() {
+	public String getUserid() {
 		return userid;
 	}
-	public void setUserid(int userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 

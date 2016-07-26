@@ -1,4 +1,4 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,26 +8,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Chorizo- Playlist Builder</title>
 <style>
+body {
+	background-color: #ccc;
+}
+
 #form {
 	width: 600px;
 	margin: 0 auto;
+	text-align: center;
 }
 
-#submitForm{
-	
-	padding: 15px;	
-	margin-top: 50px;
+#submitForm {
+	background-color: #ccc;
+	padding: 15px;
+	margin-top: 15px;
 	margin-left: 25%;
 	width: 50%;
 	border: 1px solid white;
 	border-radius: 25px;
+	color: #3e94ec;
+	text-align: center;
 }
 
 #submitForm button {
 	margin-top: 25px;
 }
 
-#submitForm input{
+#submitForm input {
 	margin: 15px;
 }
 
@@ -39,6 +46,10 @@ h1, h2, p {
 
 hr {
 	width: 75%;
+}
+
+input {
+	margin-right: 15px;
 }
 
 #playList {
@@ -56,6 +67,7 @@ hr {
 	text-rendering: optimizeLegibility;
 	color: white;
 	border-radius: 25px;
+	border: 1px solid white;
 	padding: 50px 0 300px 0;
 }
 
@@ -84,21 +96,42 @@ td {
 	text-align: center;
 }
 
-p span {
+.smallText {
 	display: block;
 	font-size: .75em;
 }
 </style>
 </head>
 <body>
+	<c:set var="token" value="${token}" scope="session" />
+	<script>
+
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (xhttp.readyState == 4 && xhttp.status == 200) {
+				console.log("worked");
+				var jsonObj = JSON.parse(xhttp.responseText);
+					document.getElementById("idGoesHere").value = jsonObj.id;
+					document.getElementById("userName").innerHTML = jsonObj.id;
+			} else {
+				console.log("bad time");
+			}
+		};
+
+		xhttp.open("GET", "https://api.spotify.com/v1/me", true);
+		xhttp.setRequestHeader("Authorization", "Bearer " + " ${sessionScope.token}");
+		xhttp.send();
+	</script>
+
 	<div id="wrapper">
 		<h1>Chorizo</h1>
 		<h2>Dynamic Playlist Builder</h2>
 		<hr>
 		<p>
-			Build a playlist by choosing a category and number of desired songs
-			for each category. Add as many categories as you like! <span>Limit
-				to 50 songs per selection.</span>
+			Welcome <span id="userName"></span>! Build a playlist by choosing a
+			category and number of desired songs for each category. Add as many
+			categories as you like! <span class="smallText">Limit to 50
+				songs per selection.</span>
 		</p>
 		<!--<form id="inputForm">-->
 		<div id="form">
@@ -132,9 +165,12 @@ p span {
 			<!--  </form> -->
 		</div>
 		<div id="playList"></div>
-		<form id="submitForm" method="post" action="saveplaylist.jsp">
-			<center>Playlist Name: <input type="text" name="playlistName" /></center>
-			<input id="hiddenField" name="trackList" type="hidden"
+		<form id="submitForm" method="post" action="savePlayList.jsp">
+			<center>
+				Playlist Name: <input type="text" name="playlistName" />
+			</center>
+			<input id="idGoesHere" name="idGoesHere" type="hidden" /> <input
+				id="hiddenField" name="trackList" type="hidden"
 				value="secret data goes here" />
 			<!--  <input id="holdDuration"	name="holdDuration" type="hidden"/> -->
 			<center>
