@@ -30,7 +30,7 @@
 
 			<ul class="navbar-nav nav">
 				<li><a href="init">Create Playlist</a></li>
-				<li><a href="userplaylists.jsp">View Playlists</a></li>
+				<li><a href="userPlayList">View Playlists</a></li>
 				<li><a href="#">About Us</a></li>
 			</ul>
 			</nav>
