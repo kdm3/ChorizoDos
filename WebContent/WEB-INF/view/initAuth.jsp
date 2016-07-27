@@ -7,99 +7,20 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Chorizo- Playlist Builder</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
 <style>
-body {
-	background-color: #ccc;
-}
+/*
+#wrapper2{
+	background-image: url("http://images2.fanpop.com/image/photos/9000000/Zoidberg-dr-zoidberg-9032706-1024-768.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 700px;
+}*/
 
-#form {
-	width: 600px;
-	margin: 0 auto;
-	text-align: center;
-}
-
-#submitForm {
-	background-color: #ccc;
-	padding: 15px;
-	margin-top: 15px;
-	margin-left: 25%;
-	width: 50%;
-	border: 1px solid white;
-	border-radius: 25px;
-	color: #3e94ec;
-	text-align: center;
-}
-
-#submitForm button {
-	margin-top: 25px;
-}
-
-#submitForm input {
-	margin: 15px;
-}
-
-h1, h2, p {
-	margin: 25px auto;
-	width: 50%;
-	text-align: center;
-}
-
-hr {
-	width: 75%;
-}
-
-input {
-	margin-right: 15px;
-}
-
-#playList {
-	width: 500px;
-	margin: 0 auto;
-}
-
-#wrapper {
-	width: 75%;
-	margin: 25px auto;
-	background-color: #3e94ec;
-	font-family: "Roboto", helvetica, arial, sans-serif;
-	font-size: 16px;
-	font-weight: 400;
-	text-rendering: optimizeLegibility;
-	color: white;
-	border-radius: 25px;
-	border: 1px solid white;
-	padding: 50px 0 300px 0;
-}
-
-iframe {
-	width: 50%;
-	margin-top: 50px;
-	margin-left: 25%;
-	margin-bottom: 0;
-	padding: 0;
-	text-align: center;
-	padding: 0;
-	margin-left: 25%;
-}
-
-table {
-	width: 75%;
-	margin: 25px auto;
-	border-spacing: 0;
-}
-
-th {
-	border-bottom: 1px solid white;
-}
-
-td {
-	text-align: center;
-}
-
-.smallText {
-	display: block;
-	font-size: .75em;
-}
 </style>
 </head>
 <body>
@@ -122,63 +43,85 @@ td {
 		xhttp.setRequestHeader("Authorization", "Bearer " + " ${sessionScope.token}");
 		xhttp.send();
 	</script>
+	<div class="row">
+		<div class="col-lg-2"></div>
+		<div id="wrapper" class="col-lg-8">
+			<h1 class="text-center">Chorizo</h1>
+			<h2 class="text-center">Dynamic Playlist Builder</h2>
+			<hr>
+			<div id="wrapper2">
+				<nav class="col-lg-12 navbar navbar-default">
 
-	<div id="wrapper">
-		<h1>Chorizo</h1>
-		<h2>Dynamic Playlist Builder</h2>
-		<hr>
-		<p>
-			Welcome <span id="userName"></span>! Build a playlist by choosing a
-			category and number of desired songs for each category. Add as many
-			categories as you like! <span class="smallText">Limit to 50
-				songs per selection.</span>
-		</p>
-		<!--<form id="inputForm">-->
-		<div id="form">
-			Category: <select id="songName" name="songName">
-				<option value="chill">Chill</option>
-				<option value="classical">Classical</option>
-				<option value="country">Country</option>
-				<option value="dinner">Dinner</option>
-				<option value="focus">Focus</option>
-				<option value="folk_americana">Folk_Americana</option>
-				<option value="funk">Funk</option>
-				<option value="hiphop">Hip-Hop</option>
-				<option value="indie_alt">Indie</option>
-				<option value="jazz">Jazz</option>
-				<option value="kids">Kids</option>
-				<option value="latin">Latin</option>
-				<option value="metal">Metal</option>
-				<option value="mood">Mood</option>
-				<option value="pop">Pop</option>
-				<option value="punk">Punk</option>
-				<option value="reggae">Reggae</option>
-				<option value="rnb">RnB</option>
-				<option value="rock">Rock</option>
-				<option value="soul">Soul</option>
-				<option value="travel">Travel</option>
-				<option value="workout">Workout</option>
-			</select>
-			<!--  <input type="text" name="songName"></input><br>-->
-			Number: <input type="text" id="songNum" name="amount"></input>
-			<button onclick='loadDoc()' type="button">Add Songs</button>
-			<!--  </form> -->
-		</div>
-		<div id="playList"></div>
-		<form id="submitForm" method="post" action="savePlayList.jsp">
-			<center>
-				Playlist Name: <input type="text" name="playlistName" />
-			</center>
-			<input id="idGoesHere" name="idGoesHere" type="hidden" /> <input
-				id="hiddenField" name="trackList" type="hidden"
-				value="secret data goes here" />
-			<!--  <input id="holdDuration"	name="holdDuration" type="hidden"/> -->
-			<center>
-				<button type="submit">Save Playlist</button>
-			</center>
-		</form>
-		<div id="here"></div>
-		<script>
+				<ul class="navbar-nav nav">
+
+					<li><a href="init">Create Playlist</a></li>
+					<li><a href="userplaylists.jsp">View Playlists</a></li>
+					<li><a href="#">About Us</a></li>
+				</ul>
+				</nav>
+				<div class="row">
+					<div class="col-lg-4"></div>
+					<div class="col-lg-4">
+						<p class="text-center">
+							Welcome <span id="userName"></span>! Build a playlist by choosing
+							a category and number of desired songs for each category. Add as
+							many categories as you like! <small><br>Limit to 15
+								songs per selection.</small>
+						</p>
+					</div>
+					<div class="col-lg-4"></div>
+				</div>
+				<!--<form id="inputForm">-->
+				<div id="form" class="form-group text-center">
+					Category: <select id="songName" name="songName">
+						<option value="chill">Chill</option>
+						<option value="classical">Classical</option>
+						<option value="country">Country</option>
+						<option value="dinner">Dinner</option>
+						<option value="focus">Focus</option>
+						<option value="folk_americana">Folk_Americana</option>
+						<option value="funk">Funk</option>
+						<option value="hiphop">Hip-Hop</option>
+						<option value="indie_alt">Indie</option>
+						<option value="jazz">Jazz</option>
+						<option value="kids">Kids</option>
+						<option value="latin">Latin</option>
+						<option value="metal">Metal</option>
+						<option value="mood">Mood</option>
+						<option value="pop">Pop</option>
+						<option value="punk">Punk</option>
+						<option value="reggae">Reggae</option>
+						<option value="rnb">RnB</option>
+						<option value="rock">Rock</option>
+						<option value="soul">Soul</option>
+						<option value="travel">Travel</option>
+						<option value="workout">Workout</option>
+					</select>
+				</div>
+				<div class="form-group text-center">
+					<!--  <input type="text" name="songName"></input><br>-->
+					Number: <input type="text" id="songNum" name="amount"></input>
+				</div>
+				<div class="form-group text-center">
+					<button class="btn btn-info" onclick='loadDoc()' type="button">Add
+						Songs</button>
+				</div>
+				<!--  </form> -->
+				<div id="playList"></div>
+				<form id="submitForm" method="post" action="savePlayList.jsp">
+					<div class="form-group text-center">
+						Playlist Name: <input type="text" name="playlistName" /> <input
+							id="idGoesHere" name="idGoesHere" type="hidden" /> <input
+							id="hiddenField" name="trackList" type="hidden"
+							value="secret data goes here" />
+						<!--  <input id="holdDuration"	name="holdDuration" type="hidden"/> -->
+						<button class="btn btn-info" type="submit">Save Playlist</button>
+					</div>
+				</form>
+				<div class="col-lg-2"></div>
+				<div id="here" class="col-lg-8"></div>
+				<div class="col-lg-2"></div>
+				<script>
 		printFrame = false;
 		trackList = "";
 
@@ -191,7 +134,10 @@ td {
 			if (document.getElementsByTagName("table").length < 1) {
 				var table = document.createElement("table");
 				var insert = document.getElementById("here");
+				var tbody = document.createElement("tbody");
 				insert.appendChild(table);
+				document.getElementsByTagName("table")[0].className = "table table-striped table-bordered";
+				document.getElementsByTagName("table")[0].appendChild(tbody);
 			}
 			
 			//create new request
@@ -259,14 +205,15 @@ td {
 							- 1);
 					var tr = document.createElement("tr");
 					var table = document.getElementsByTagName("table")[0];
-					table.appendChild(tr);
+					var tbody = document.getElementsByTagName("tbody")[0];
+					tbody.appendChild(tr);
 					
 					//parse duration from milisecons to Minute:Second format
 					var mins = ((playlist.items[rand].track.duration_ms) / 1000) / 60;
 					var secs = parseInt(((mins % 1) * 60));
 					
 					//get last tr and insert new td with song information from JSON oject
-					table.lastChild.innerHTML = "<td>"
+					tbody.lastChild.innerHTML = "<td>"
 							+ playlist.items[rand].track.artists[0].name
 							+ "</td><td>"
 							+ playlist.items[rand].track.name
@@ -277,9 +224,9 @@ td {
 					trackList += split[2];
 					
 					//insert iframe into playFrame div
-					playFrame.innerHTML = "<br><iframe src=\"https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:"
+					playFrame.innerHTML = "<center><iframe src=\"https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:"
 							+ trackList
-							+ "\" frameborder=\"0\" allowtransparency=\"true\"></iframe>";
+							+ "\" frameborder=\"0\" allowtransparency=\"true\"></iframe></center>";
 							
 					//insert trackList into hidden field to use for POSTing
 					hiddenField.value = trackList;
@@ -293,6 +240,9 @@ td {
 			xhttp.send();
 		}
 	</script>
+			</div>
+		</div>
 	</div>
+	<div class="col-lg-2"></div>
 </body>
 </html>

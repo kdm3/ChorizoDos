@@ -36,7 +36,7 @@
 		Playlists p = new Playlists(name, tracks, userid);
 
 		session.setAttribute("userid", userid);
-		out.println("Your are " + session.getAttribute(userid));
+		out.println("You are " + userid);
 		int i = DAO.addPlaylist(p);
 		if (i > 0)
 			out.print("Playlist successfully added");
