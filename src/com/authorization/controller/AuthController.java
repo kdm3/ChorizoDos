@@ -103,4 +103,12 @@ public class AuthController {
 		return new ModelAndView("/savePlayList");
 	}
 	
+	@RequestMapping(value ="/userPlayList")
+	public ModelAndView userPlayList(HttpServletRequest request){
+		request.getSession().getAttribute("userid");
+		return new ModelAndView("/userPlayList");
+	}
+	
+	
+	
 }

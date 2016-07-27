@@ -20,7 +20,6 @@
 	background-repeat: no-repeat;
 	height: 700px;
 }*/
-
 </style>
 </head>
 <body>
@@ -55,7 +54,7 @@
 				<ul class="navbar-nav nav">
 
 					<li><a href="init">Create Playlist</a></li>
-					<li><a href="userplaylists.jsp">View Playlists</a></li>
+					<li><a href="userPlayList">View Playlists</a></li>
 					<li><a href="#">About Us</a></li>
 				</ul>
 				</nav>
@@ -103,20 +102,17 @@
 					Number: <input type="text" id="songNum" name="amount"></input>
 				</div>
 				<div class="form-group text-center">
-					<button class="btn btn-info" onclick='loadDoc()' type="button">Add
-						Songs</button>
+					<button id="addSongs" class="btn btn-info" onclick='loadDoc()'
+						type="button">Add Songs</button>
 				</div>
 				<!--  </form> -->
 				<div id="playList"></div>
-				<form id="submitForm" method="post" action="savePlayList.jsp">
-					<div class="form-group text-center">
-						Playlist Name: <input type="text" name="playlistName" /> <input
-							id="idGoesHere" name="idGoesHere" type="hidden" /> <input
-							id="hiddenField" name="trackList" type="hidden"
-							value="secret data goes here" />
-						<!--  <input id="holdDuration"	name="holdDuration" type="hidden"/> -->
-						<button class="btn btn-info" type="submit">Save Playlist</button>
-					</div>
+				<form id="submitForm" method="post" action="savePlayList.html"
+					target="resultframe">
+					<input id="idGoesHere" name="idGoesHere" type="hidden" /> <input
+						id="hiddenField" name="trackList" type="hidden"
+						value="secret data goes here" />
+					<div id="dynamicPlay"></div>
 				</form>
 				<div class="col-lg-2"></div>
 				<div id="here" class="col-lg-8"></div>
@@ -147,6 +143,8 @@
 			xhttp.onreadystatechange = function() {
 				if (xhttp.readyState == 4 && xhttp.status == 200) {
 					var jsonObj = JSON.parse(xhttp.responseText);
+					document.getElementById("addSongs").innerHTML = "Add More Songs";
+					document.getElementById("dynamicPlay").innerHTML = "<iframe scrolling=\"no\" frameBorder=\"0\" name=\"resultframe\" width=\"100%\" height=\"40\"></iframe><div class=\"form-group text-center\">Playlist Name: <input type=\"text\" name=\"playlistName\" /> <button class=\"btn btn-info\" type=\"submit\">Save Playlist</button></div>";					
 					
 					//this loop controls how many songs will be grabbed.
 					//need to get duration of songs and compare them to num
