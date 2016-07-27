@@ -27,7 +27,14 @@ public class Playlists {
 	public String getPlaylistname() {
 		return playlistname;
 	}
-	
+
+	/**
+	 * @return the playlisthref
+	 */
+	public String getTrackList() {
+		return trackList;
+	}
+
 	/**
 	 * @param id the id to set
 	 */
@@ -40,18 +47,20 @@ public class Playlists {
 	public void setPlaylistname(String playlistname) {
 		this.playlistname = playlistname;
 	}
-	
+
+	/**
+	 * @param playlisthref the playlisthref to set
+	 */
+	public void setTrackList(String trackList) {
+		this.trackList = trackList;
+	}
+
 	public String getUserid() {
 		return userid;
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public String getTrackList() {
-		return trackList;
-	}
-	public void setTrackList(String trackList) {
-		this.trackList = trackList;
-	}
+	
 
 }

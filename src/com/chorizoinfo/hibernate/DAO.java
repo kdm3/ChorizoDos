@@ -27,7 +27,7 @@ public class DAO {
 		 configuration.configure("hibernate.cfg.xml");
 		 
 		 // pass in setup file for Product class
-		 configuration.addResource("users.hbm.xml");
+		 //configuration.addResource("users.hbm.xml");
 		 configuration.addResource("playlists.hbm.xml");
 		 // Since version 4.x, service registry is being used
 		 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().
@@ -37,7 +37,7 @@ public class DAO {
 		 factory = configuration.buildSessionFactory(serviceRegistry);
 
 	}
-	
+	/*
 	public static int addUser(Users u) {
 		if (factory == null)
 			setupFactory();
@@ -57,7 +57,7 @@ public class DAO {
 				    
 		 return i;  
 	}
-	
+	*/
 	public static int addPlaylist(Playlists p){
 		if (factory == null)
 			setupFactory();
@@ -78,7 +78,7 @@ public class DAO {
 		 return i;
 		
 	}
-	
+	/*
 	public static List<Playlists> getAllPlaylists(){
 		if (factory == null)
 			setupFactory();
@@ -98,7 +98,9 @@ public class DAO {
       	System.out.println(playlistnames.size());	    
 		return playlistnames;
 		
-	}
+
+	}*/
+
 	public static List<Playlists> getUserPlaylist(String userid){
 		if (factory == null)
 			setupFactory();
@@ -108,16 +110,20 @@ public class DAO {
 		 // Begin transaction
 		 hibernateSession.getTransaction().begin();
 		 
-		 String qry = "FROM Playlists WHERE user_id=" + userid;
+
+		 String qry = "FROM Playlists WHERE userid='" + userid + "'";
 		 //deprecated method & unsafe cast
-         List<Playlists> playlist = hibernateSession.createQuery(qry).list(); 
+         List<Playlists> playList = hibernateSession.createQuery(qry).list(); 
+
 		 
          // Commit transaction
          hibernateSession.getTransaction().commit();
       		 
       	 hibernateSession.close();  
-      	System.out.println(playlist.size());	    
-		return playlist;
+
+      	System.out.println(playList.size());	    
+		return playList;
+
 		
 	}
 }
