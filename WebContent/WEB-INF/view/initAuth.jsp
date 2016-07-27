@@ -21,6 +21,8 @@
 	height: 700px;
 }*/
 </style>
+<link href="<c:url value="/resources/style.css" />" rel="stylesheet">
+
 </head>
 <body>
 	<c:set var="token" value="${token}" scope="session" />
