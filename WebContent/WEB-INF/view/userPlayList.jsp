@@ -29,7 +29,6 @@
 			<nav class="col-lg-12 navbar navbar-default">
 
 			<ul class="navbar-nav nav">
-
 				<li><a href="init">Create Playlist</a></li>
 				<li><a href="userplaylists.jsp">View Playlists</a></li>
 				<li><a href="#">About Us</a></li>

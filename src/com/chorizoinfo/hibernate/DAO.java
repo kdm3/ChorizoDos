@@ -2,14 +2,12 @@ package com.chorizoinfo.hibernate;
 
 
 import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-
-import com.chorizoinfo.hibernate.Users;
-import com.chorizoinfo.hibernate.Playlists;
 
 
 
@@ -29,7 +27,7 @@ public class DAO {
 		 configuration.configure("hibernate.cfg.xml");
 		 
 		 // pass in setup file for Product class
-		 configuration.addResource("users.hbm.xml");
+		 //configuration.addResource("users.hbm.xml");
 		 configuration.addResource("playlists.hbm.xml");
 		 // Since version 4.x, service registry is being used
 		 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().
@@ -100,7 +98,9 @@ public class DAO {
       	System.out.println(playlistnames.size());	    
 		return playlistnames;
 		
+
 	}*/
+
 	public static List<Playlists> getUserPlaylist(String userid){
 		if (factory == null)
 			setupFactory();
@@ -110,16 +110,20 @@ public class DAO {
 		 // Begin transaction
 		 hibernateSession.getTransaction().begin();
 		 
+
 		 String qry = "FROM Playlists WHERE userid='" + userid + "'";
 		 //deprecated method & unsafe cast
          List<Playlists> playList = hibernateSession.createQuery(qry).list(); 
+
 		 
          // Commit transaction
          hibernateSession.getTransaction().commit();
       		 
       	 hibernateSession.close();  
+
       	System.out.println(playList.size());	    
 		return playList;
+
 		
 	}
 }
