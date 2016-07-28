@@ -1,25 +1,13 @@
 body {
-	/*background: #04756F url("stripes2.png") repeat-y;*/
-	/*background-size: 100%;*/
-	/*background-color: #000;*/
 	background-color: #000;
 }
 
 .frame {
-	/*background: #04756F url("stripes3.png") repeat-y;*/
 	height: 100vh;
 }
 
-.frame2 {
-	/*background-color: #04756F;
-	/*position: absolute;
-	width: 100%;
-	/*left: 15px;
-	/*bottom: 0;*/
-	
-}
-
 #wrapper {
+	height: 100vh;
 	position: absolute;
 	top: 75px;
 	left: 275px;
@@ -30,26 +18,42 @@ body {
 	color: #FFF;
 	background-color: #000;
 	z-index: 100;
+	position: absolute;
+}
+
+.subHead {
+	display: block;
+	font-size: .25em;
+	color: #FFF ! important;
+	margin-bottom: 25px;
+}
+
+#larger{
+	font-size: 1.5em;
+}
+
+.chorizo {
+	color: #D90000;
 }
 
 .red {
 	height: 100%;
-	background-image: linear-gradient(to bottom, #D90000 0%, #000000 50%);
+	background-image: linear-gradient(to bottom, #D90000 0%, #000000 90%);
 }
 
 .orange {
 	height: 100%;
-	background-image: linear-gradient(to bottom, #FF2D00 0%, #000000 50%);
+	background-image: linear-gradient(to bottom, #FF2D00 0%, #000000 90%);
 }
 
 .yellow {
 	height: 100%;
-	background-image: linear-gradient(to bottom, #FF8C00 0%, #000000 50%);
+	background-image: linear-gradient(to bottom, #FF8C00 0%, #000000 90%);
 }
 
 .teal {
 	height: 100%;
-	background-image: linear-gradient(to bottom, #04756F 0%, #000000 50%);
+	background-image: linear-gradient(to bottom, #04756F 0%, #000000 90%);
 }
 
 #wrapper2 {
@@ -57,6 +61,7 @@ body {
 }
 
 h1 {
+	margin-bottom: 0;
 	font-size: 150px;
 	color: #D90000;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -96,4 +101,8 @@ th {
 
 p {
 	font-weight: bold;
+}
+
+a {
+	color: #FF8C00;
 }

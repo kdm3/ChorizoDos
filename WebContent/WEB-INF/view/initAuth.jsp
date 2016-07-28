@@ -12,17 +12,9 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
-<style>
-/*
-#wrapper2{
-	background-image: url("http://images2.fanpop.com/image/photos/9000000/Zoidberg-dr-zoidberg-9032706-1024-768.jpg");
-	background-position: center;
-	background-repeat: no-repeat;
-	height: 700px;
-}*/
-</style>
 <link href="<c:url value="/resources/style.css" />" rel="stylesheet">
-<link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz'
+	rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<c:set var="token" value="${token}" scope="session" />
@@ -53,9 +45,7 @@
 	<div class="row">
 		<div class="col-lg-2 side"></div>
 		<div id="wrapper" class="col-lg-8">
-			<h1 class="text-center">Chorizo</h1>
-			<h2 class="text-center">Dynamic Playlist Builder</h2>
-			<hr>
+			<h1 class="text-center">Chorizo<span class="chorizo subHead">Like Sausage, But Music.</span></h1>			<hr>
 			<div id="wrapper2">
 				<nav class="col-lg-12 navbar navbar-default">
 
@@ -69,11 +59,13 @@
 				<div class="row">
 					<div class="col-lg-4"></div>
 					<div class="col-lg-4">
+						<h2 style="border-radius: 25px; height: 25px;" class="text-center yellow">
+							Welcome <span id="userName"></span>!
+						</h2>
 						<p class="text-center">
-							Welcome <span id="userName"></span>! Build a playlist by choosing
-							a category and number of desired songs for each category. Add as
-							many categories as you like! <small><br>Limit to 15
-								songs per selection.</small>
+							Build a playlist by choosing a category and number of desired
+							songs for each category. Add as many categories as you like! <small><br>Limit
+								to 15 songs per selection.</small>
 						</p>
 					</div>
 					<div class="col-lg-4"></div>

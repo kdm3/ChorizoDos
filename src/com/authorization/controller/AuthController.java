@@ -26,7 +26,7 @@ public class AuthController {
 
 
 	public static final String clientId = "f51aba0d64d444d3b91fa0654e5f6e7f";
-	public static final String clientSecret = "363647ac2286445c84f7d4687e8144fc";
+	public static final String clientSecret = "4c16cc15358b4227b57ace621dd61ada";
 	public static final String redirectURI = "http://localhost:8080/ChorizoDos/callback";
 	// "http://localhost:8080/ChorizoDos/callback";
 	// "http://chorizo-env.us-west-2.elasticbeanstalk.com/callback";
@@ -105,6 +105,7 @@ public class AuthController {
 	
 	@RequestMapping(value ="/userPlayList")
 	public ModelAndView userPlayList(HttpServletRequest request){
+		//request.getSession().setAttribute("userid", userid);
 		request.getSession().getAttribute("userid");
 		return new ModelAndView("/userPlayList");
 	}

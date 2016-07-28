@@ -33,8 +33,9 @@
 	<div class="row">
 		<div class="col-lg-2"></div>
 		<div id="wrapper" class="col-lg-8">
-			<h1 class="text-center">Chorizo</h1>
-			<h2 class="text-center">Dynamic Playlist Builder</h2>
+			<h1 class="text-center">
+				Chorizo<span class="chorizo subHead">Like Sausage, But Music.</span>
+			</h1>
 			<hr>
 			<nav class="col-lg-12 navbar navbar-default">
 
