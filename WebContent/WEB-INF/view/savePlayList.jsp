@@ -14,7 +14,7 @@
 </head>
 <body>
 	<center>
-		<p>${result}</p>
+		<p style="color: #D90000;">${result}</p>
 	</center>
 </body>
 </html>

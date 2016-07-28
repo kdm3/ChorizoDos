@@ -22,7 +22,7 @@
 }*/
 </style>
 <link href="<c:url value="/resources/style.css" />" rel="stylesheet">
-
+<link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<c:set var="token" value="${token}" scope="session" />
@@ -44,8 +44,14 @@
 		xhttp.setRequestHeader("Authorization", "Bearer " + " ${sessionScope.token}");
 		xhttp.send();
 	</script>
+	<div class="row frame">
+		<div class="col-lg-3 red"></div>
+		<div class="col-lg-3 orange"></div>
+		<div class="col-lg-3 yellow"></div>
+		<div class="col-lg-3 teal"></div>
+	</div>
 	<div class="row">
-		<div class="col-lg-2"></div>
+		<div class="col-lg-2 side"></div>
 		<div id="wrapper" class="col-lg-8">
 			<h1 class="text-center">Chorizo</h1>
 			<h2 class="text-center">Dynamic Playlist Builder</h2>
@@ -104,8 +110,8 @@
 					Number: <input type="text" id="songNum" name="amount"></input>
 				</div>
 				<div class="form-group text-center">
-					<button id="addSongs" class="btn btn-info" onclick='loadDoc()'
-						type="button">Add Songs</button>
+					<button id="addSongs" class="btn" onclick='loadDoc()' type="button">Add
+						Songs</button>
 				</div>
 				<!--  </form> -->
 				<div id="playList"></div>
@@ -146,7 +152,7 @@
 				if (xhttp.readyState == 4 && xhttp.status == 200) {
 					var jsonObj = JSON.parse(xhttp.responseText);
 					document.getElementById("addSongs").innerHTML = "Add More Songs";
-					document.getElementById("dynamicPlay").innerHTML = "<iframe scrolling=\"no\" frameBorder=\"0\" name=\"resultframe\" width=\"100%\" height=\"40\"></iframe><div class=\"form-group text-center\">Playlist Name: <input type=\"text\" name=\"playlistName\" /> <button class=\"btn btn-info\" type=\"submit\">Save Playlist</button></div>";					
+					document.getElementById("dynamicPlay").innerHTML = "<iframe scrolling=\"no\" frameBorder=\"0\" name=\"resultframe\" width=\"100%\" height=\"40\"></iframe><div class=\"form-group text-center\">Playlist Name: <input type=\"text\" name=\"playlistName\" /> <button class=\"btn \" type=\"submit\">Save Playlist</button></div>";					
 					
 					//this loop controls how many songs will be grabbed.
 					//need to get duration of songs and compare them to num
@@ -175,7 +181,7 @@
 			//create new table row and insert before other rows to create header - innerHTML writes html code inside <tr>
 			tr = document.createElement("tr");
 			table.insertBefore(tr, table.firstChild);
-			table.firstChild.innerHTML = "<th>Artist</th><th>Song Title</th><th>Album Cover</th><th>Duration</th>";
+			table.firstChild.innerHTML = "<th>Artist</th><th>Song Title</th><th>Album Cover</th><th>Length</th>";
 			//console.log(trackList);
 		}
 		
@@ -243,6 +249,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-2"></div>
+	<div class="row frame2">
+		<div class="col-lg-12"></div>
+	</div>
 </body>
 </html>

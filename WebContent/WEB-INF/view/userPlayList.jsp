@@ -19,9 +19,17 @@
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
 <link href="<c:url value="/resources/style.css" />" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz'
+	rel='stylesheet' type='text/css'>
 
 </head>
 <body>
+	<div class="row frame">
+		<div class="col-lg-3 red"></div>
+		<div class="col-lg-3 orange"></div>
+		<div class="col-lg-3 yellow"></div>
+		<div class="col-lg-3 teal"></div>
+	</div>
 	<div class="row">
 		<div class="col-lg-2"></div>
 		<div id="wrapper" class="col-lg-8">
@@ -43,21 +51,23 @@
 				</div>
 				<div class="col-lg-4"></div>
 			</div>
-			<%
-				String username = (String) request.getSession().getAttribute("userid");
-				//need session variable userid and pass it into dao
-				String userid = username;
+			<center>
+				<%
+					String username = (String) request.getSession().getAttribute("userid");
+					//need session variable userid and pass it into dao
+					String userid = username;
 
-				List<Playlists> playlists = DAO.getUserPlaylist(userid);
-				out.println("<select id=\"trackList\">");
-				for (Playlists p : playlists) {
-					out.println("<option name=\"" + p.getTrackList() + "\">" + p.getPlaylistname() + "</option>");//"<td>" + p.getTrackList() + "</td><</tr>");
-				}
-				out.println("</select");
-			%>
-			<input type="hidden" id="list" value="" />
-			<button type="button" onclick='displayIframe()'>Play</button>
-			<div id="iFrame"></div>
+					List<Playlists> playlists = DAO.getUserPlaylist(userid);
+					out.println("<select id=\"trackList\">");
+					for (Playlists p : playlists) {
+						out.println("<option name=\"" + p.getTrackList() + "\">" + p.getPlaylistname() + "</option>");//"<td>" + p.getTrackList() + "</td><</tr>");
+					}
+					out.println("</select");
+				%>
+				<input type="hidden" id="list" value="" />
+				<button type="button" onclick='displayIframe()'>Play</button>
+				<div id="iFrame"></div>
+			</center>
 			<script>
 				function displayIframe() {
 					var select = document.getElementById("trackList").options[document

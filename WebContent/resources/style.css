@@ -1,3 +1,99 @@
 body {
-	background-color: #ccc;
+	/*background: #04756F url("stripes2.png") repeat-y;*/
+	/*background-size: 100%;*/
+	/*background-color: #000;*/
+	background-color: #000;
+}
+
+.frame {
+	/*background: #04756F url("stripes3.png") repeat-y;*/
+	height: 100vh;
+}
+
+.frame2 {
+	/*background-color: #04756F;
+	/*position: absolute;
+	width: 100%;
+	/*left: 15px;
+	/*bottom: 0;*/
+	
+}
+
+#wrapper {
+	position: absolute;
+	top: 75px;
+	left: 275px;
+	padding-bottom: 0;
+	margin: 0;
+	border-radius: 25px;
+	margin-top: 50px;
+	color: #FFF;
+	background-color: #000;
+	z-index: 100;
+}
+
+.red {
+	height: 100%;
+	background-image: linear-gradient(to bottom, #D90000 0%, #000000 50%);
+}
+
+.orange {
+	height: 100%;
+	background-image: linear-gradient(to bottom, #FF2D00 0%, #000000 50%);
+}
+
+.yellow {
+	height: 100%;
+	background-image: linear-gradient(to bottom, #FF8C00 0%, #000000 50%);
+}
+
+.teal {
+	height: 100%;
+	background-image: linear-gradient(to bottom, #04756F 0%, #000000 50%);
+}
+
+#wrapper2 {
+	padding-bottom: 0;
+}
+
+h1 {
+	font-size: 150px;
+	color: #D90000;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+h2 {
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+select, input {
+	color: #04756F;
+}
+
+table, button {
+	border: none ! important;
+	background-color: #04756F;
+	border-radius: 25px;
+	text-align: center;
+}
+
+table {
+	border-collapse: collapse;
+	color: #2E0297;
+	margin-bottom: 0;
+	table-layout: fixed;
+	border: 0;
+}
+
+a:hover {
+	color: #D90000 ! important;
+}
+
+th {
+	text-align: center;
+	color: #FFF;
+}
+
+p {
+	font-weight: bold;
 }
