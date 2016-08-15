@@ -47,40 +47,55 @@
 			</ul>
 			</nav>
 			<div class="row">
-				<div class="col-lg-4"></div>
-				<div class="col-lg-4">
-					<p class="text-center">Chose a playlist from the dropdown.</p>
+				<div class="col-lg-4 round">
+					<center>
+						<image height="200px"
+							src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAczAAAAJDQxODVmOGQwLTlhMzUtNGJmMy1hZjRiLWY2MWYzZjFlODFiNw.jpg" />
+						<p>Robert Baxter</p>
+						<p>
+							<a href="mailto:baxterrp@gmail.com">baxterrp@gmail.com</a>
+						</p>
+						<p>
+							<a href="https://www.linkedin.com/in/baxterrp">LinkedIn</a>
+						</p>
+						<p>
+							<a href="https://www.github.com/baxterrp">Github</a>
+						</p>
+					</center>
 				</div>
-				<div class="col-lg-4"></div>
+				<div class="col-lg-4 round">
+					<center>
+						<image height="200px"
+							src="https://media.licdn.com/media/AAEAAQAAAAAAAAgbAAAAJGU0ZTY1YTI1LWM3ZDAtNGNlYy1hZmEzLWNiZTdhMjIyZTg3Yg.jpg" />
+						<p>Kaitlin MacNeill</p>
+						<p>
+							<a href="mailto:macneill.kaitlin@gmail.com">macneill.kaitlin@gmail.com</a>
+						</p>
+						<p>
+							<a href="https://www.linkedin.com/in/kaitlin-macneill">LinkedIn</a>
+						</p>
+						<p>
+							<a href="https://www.github.com/kdm3">Github</a>
+						</p>
+					</center>
+				</div>
+				<div class="col-lg-4 round">
+					<center>
+						<image height="200px"
+							src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAczAAAAJDg2MzEwYTE0LTgwZTAtNDcxMy1iMGM1LTgxNjdjNDhjNjg4ZQ.jpg" />
+						<p>Eric Price</p>
+						<p>
+							<a href="mailto:#">Eric Sucks@gmail.com</a>
+						</p>
+						<p>
+							<a href="https://www.linkedin.com/in/ericpricecreates">LinkedIn</a>
+						</p>
+						<p>
+							<a href="https://www.github.com/Erpr">Github</a>
+						</p>
+					</center>
+				</div>
 			</div>
-			<center>
-				<%
-					String username = (String) request.getSession().getAttribute("userid");
-					//need session variable userid and pass it into dao
-					String userid = username;
-
-					List<Playlists> playlists = DAO.getUserPlaylist(userid);
-					out.println("<select id=\"trackList\">");
-					for (Playlists p : playlists) {
-						out.println("<option name=\"" + p.getTrackList() + "\">" + p.getPlaylistname() + "</option>");//"<td>" + p.getTrackList() + "</td><</tr>");
-					}
-					out.println("</select");
-				%>
-				<input type="hidden" id="list" value="" />
-				<button type="button" onclick='displayIframe()'>Play</button>
-				<div id="iFrame"></div>
-			</center>
-			<script>
-				function displayIframe() {
-					var select = document.getElementById("trackList").options[document
-							.getElementById("trackList").selectedIndex]
-							.getAttribute('name');
-					var playFrame = document.getElementById("iFrame");
-					playFrame.innerHTML = "<br><iframe src=\"https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:"
-							+ select
-							+ "\" frameborder=\"0\" allowtransparency=\"true\"></iframe>";
-				}
-			</script>
 		</div>
 	</div>
 </body>

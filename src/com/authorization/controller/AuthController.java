@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,9 +26,9 @@ import com.wrapper.spotify.models.AuthorizationCodeCredentials;
 public class AuthController {
 
 
-	public static final String clientId = "f51aba0d64d444d3b91fa0654e5f6e7f";
-	public static final String clientSecret = "4c16cc15358b4227b57ace621dd61ada";
-	public static final String redirectURI = "http://localhost:8080/ChorizoDos/callback";
+	public static final String clientId = "";
+	public static final String clientSecret = "";
+	public static final String redirectURI = "http://chorizo-env.us-west-2.elasticbeanstalk.com/callback";
 	// "http://localhost:8080/ChorizoDos/callback";
 	// "http://chorizo-env.us-west-2.elasticbeanstalk.com/callback";
 
@@ -103,13 +104,20 @@ public class AuthController {
 		return new ModelAndView("/savePlayList");
 	}
 	
-	@RequestMapping(value ="/userPlayList")
-	public ModelAndView userPlayList(HttpServletRequest request){
-		//request.getSession().setAttribute("userid", userid);
-		request.getSession().getAttribute("userid");
+	@RequestMapping(value ="/{id}")
+	public ModelAndView userPlayList(HttpServletRequest request, @PathVariable("id") String id){
+		request.getSession().setAttribute("userid", id);
 		return new ModelAndView("/userPlayList");
 	}
 	
+	@RequestMapping(value ="/userPlayList")
+	public ModelAndView playList(HttpServletRequest request){
+		return new ModelAndView("/userPlayList");
+	}
+	@RequestMapping(value ="/about")
+	public ModelAndView aboutPage(HttpServletRequest request){
+		return new ModelAndView("/about");
+	}
 	
 	
 }

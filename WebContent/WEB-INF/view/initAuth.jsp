@@ -27,11 +27,14 @@
 				var jsonObj = JSON.parse(xhttp.responseText);
 					document.getElementById("idGoesHere").value = jsonObj.id;
 					document.getElementById("userName").innerHTML = jsonObj.id;
+					document.getElementById("userListLink").innerHTML = "<a href='" + jsonObj.id + "'>View Playlists</a>";
+
 			} else {
 				console.log("bad time");
 			}
 		};
 
+		
 		xhttp.open("GET", "https://api.spotify.com/v1/me", true);
 		xhttp.setRequestHeader("Authorization", "Bearer " + " ${sessionScope.token}");
 		xhttp.send();
@@ -45,21 +48,25 @@
 	<div class="row">
 		<div class="col-lg-2 side"></div>
 		<div id="wrapper" class="col-lg-8">
-			<h1 class="text-center">Chorizo<span class="chorizo subHead">Like Sausage, But Music.</span></h1>			<hr>
+			<h1 class="text-center">
+				Chorizo<span class="chorizo subHead">Like Sausage, But Music.</span>
+			</h1>
+			<hr>
 			<div id="wrapper2">
 				<nav class="col-lg-12 navbar navbar-default">
 
 				<ul class="navbar-nav nav">
 
 					<li><a href="init">Create Playlist</a></li>
-					<li><a href="userPlayList">View Playlists</a></li>
-					<li><a href="#">About Us</a></li>
+					<li id="userListLink"></li>
+					<li><a href="about">About Us</a></li>
 				</ul>
 				</nav>
 				<div class="row">
 					<div class="col-lg-4"></div>
 					<div class="col-lg-4">
-						<h2 style="border-radius: 25px; height: 25px;" class="text-center yellow">
+						<h2 style="border-radius: 25px; height: 25px;"
+							class="text-center yellow">
 							Welcome <span id="userName"></span>!
 						</h2>
 						<p class="text-center">

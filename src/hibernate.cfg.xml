@@ -10,12 +10,12 @@
         <!-- Database connection settings -->
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 
-        <!-- <property name="hibernate.connection.url">jdbc:mysql://aa12i3zt1c75uit.cfqwghzuojeg.us-west-2.rds.amazonaws.com:3306</property>-->
-         <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/chorizoinfo</property>
-        <property name="hibernate.connection.username">java</property>
-        <property name="hibernate.connection.password"></property>
-       <!-- <property name="hibernate.connection.username">ChorizoDBdev</property>-->
-       <!--  <property name="hibernate.connection.password">dbdevpassword</property> -->
+        <property name="hibernate.connection.url">jdbc:mysql://aa12i3zt1c75uit.cfqwghzuojeg.us-west-2.rds.amazonaws.com:3306</property>
+        <!-- <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/chorizoinfo</property> -->
+       <!-- <property name="hibernate.connection.username">java</property> 
+        <property name="hibernate.connection.password">java123</property> -->
+        <property name="hibernate.connection.username">ChorizoDBdev</property>
+        <property name="hibernate.connection.password">dbdevpassword</property>
 
 
         <!-- SQL dialect -->
