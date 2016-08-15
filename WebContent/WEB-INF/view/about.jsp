@@ -85,7 +85,7 @@
 							src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAczAAAAJDg2MzEwYTE0LTgwZTAtNDcxMy1iMGM1LTgxNjdjNDhjNjg4ZQ.jpg" />
 						<p>Eric Price</p>
 						<p>
-							<a href="mailto:#">Eric Sucks@gmail.com</a>
+							<a href="mailto:#">EricsEmail@gmail.com</a>
 						</p>
 						<p>
 							<a href="https://www.linkedin.com/in/ericpricecreates">LinkedIn</a>
