@@ -43,7 +43,7 @@
 			<ul class="navbar-nav nav">
 				<li><a href="init">Create Playlist</a></li>
 				<li><a href="userPlayList">View Playlists</a></li>
-				<li><a href="about">About Us</a></li>
+				<li><a href="about">Team Chorizo</a></li>
 			</ul>
 			</nav>
 			<div class="row">
@@ -85,7 +85,7 @@
 							src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAczAAAAJDg2MzEwYTE0LTgwZTAtNDcxMy1iMGM1LTgxNjdjNDhjNjg4ZQ.jpg" />
 						<p>Eric Price</p>
 						<p>
-							<a href="mailto:#">EricsEmail@gmail.com</a>
+							<a href="mailto:email.ericprice@gmail.com">email.ericprice@gmail.com</a>
 						</p>
 						<p>
 							<a href="https://www.linkedin.com/in/ericpricecreates">LinkedIn</a>
