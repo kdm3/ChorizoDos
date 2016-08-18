@@ -27,7 +27,7 @@ public class AuthController {
 
 	public static final String clientId = "";
 	public static final String clientSecret = "";
-	public static final String redirectURI = "http://chorizo-env.us-west-2.elasticbeanstalk.com/callback";
+	public static final String redirectURI = "http://localhost:8080/ChorizoDos/callback";
 	// "http://localhost:8080/ChorizoDos/callback";
 	// "http://chorizo-env.us-west-2.elasticbeanstalk.com/callback";
 
@@ -113,6 +113,7 @@ public class AuthController {
 
 	@RequestMapping(value = "/userPlayList")
 	public ModelAndView playList(HttpServletRequest request) {
+		request.getSession().getAttribute("userid");
 		return new ModelAndView("/userPlayList");
 	}
 
@@ -124,6 +125,7 @@ public class AuthController {
 
 	@RequestMapping(value = "/about")
 	public ModelAndView viewAbout(HttpServletRequest request) {
+		request.getSession().getAttribute("userid");
 		return new ModelAndView("/about");
 	}
 }
