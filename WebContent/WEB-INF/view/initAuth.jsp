@@ -28,6 +28,7 @@
 					document.getElementById("idGoesHere").value = jsonObj.id;
 					document.getElementById("userName").innerHTML = jsonObj.id;
 					document.getElementById("userListLink").innerHTML = "<a href='" + jsonObj.id + "'>View Playlists</a>";
+					document.getElementById("helpListLink").innerHTML ="<a href='about-" + jsonObj.id + "'>Team Chorizo</a>";
 
 			} else {
 				console.log("bad time");
@@ -59,7 +60,7 @@
 
 					<li><a href="init">Create Playlist</a></li>
 					<li id="userListLink"></li>
-					<li><a href="about">About Us</a></li>
+					<li id="helpListLink"></li>
 				</ul>
 				</nav>
 				<div class="row">

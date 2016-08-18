@@ -25,7 +25,6 @@ import com.wrapper.spotify.models.AuthorizationCodeCredentials;
 @Controller
 public class AuthController {
 
-
 	public static final String clientId = "";
 	public static final String clientSecret = "";
 	public static final String redirectURI = "http://chorizo-env.us-west-2.elasticbeanstalk.com/callback";
@@ -79,45 +78,52 @@ public class AuthController {
 
 		model.addAttribute("token", token);
 		model.addAttribute("rtoken", rtoken);
-		
+
 		// return "/spotify/initAuth";
 		return new ModelAndView("/initAuth");
 	}
 
-	@RequestMapping(value ="/savePlayList")
-	public ModelAndView savePlayList(@RequestParam("playlistName") String name, @RequestParam("trackList") String tracks, @RequestParam("idGoesHere") String userid, HttpServletRequest request, Model model){
-		
-		//creates instance of playlist created by user
+	@RequestMapping(value = "/savePlayList")
+	public ModelAndView savePlayList(@RequestParam("playlistName") String name,
+			@RequestParam("trackList") String tracks, @RequestParam("idGoesHere") String userid,
+			HttpServletRequest request, Model model) {
+
+		// creates instance of playlist created by user
 		Playlists p = new Playlists(name, tracks, userid);
-		String result= "";
+		String result = "";
 		request.getSession().setAttribute("userid", userid);
 		System.out.println("You are " + userid);
-		
-		//adds playlist that is created above into the database
+
+		// adds playlist that is created above into the database
 		int i = DAO.addPlaylist(p);
 		if (i > 0)
-			result= "Playlist successfully added";
+			result = "Playlist successfully added";
 		else
-			result="Error; Playlist not added";
+			result = "Error; Playlist not added";
 		model.addAttribute("result", result);
-		
+
 		return new ModelAndView("/savePlayList");
 	}
-	
-	@RequestMapping(value ="/{id}")
-	public ModelAndView userPlayList(HttpServletRequest request, @PathVariable("id") String id){
+
+	@RequestMapping(value = "/{id}")
+	public ModelAndView userPlayList(HttpServletRequest request, @PathVariable("id") String id) {
 		request.getSession().setAttribute("userid", id);
 		return new ModelAndView("/userPlayList");
 	}
-	
-	@RequestMapping(value ="/userPlayList")
-	public ModelAndView playList(HttpServletRequest request){
+
+	@RequestMapping(value = "/userPlayList")
+	public ModelAndView playList(HttpServletRequest request) {
 		return new ModelAndView("/userPlayList");
 	}
-	@RequestMapping(value ="/about")
-	public ModelAndView aboutPage(HttpServletRequest request){
+
+	@RequestMapping(value = "/about-{id}")
+	public ModelAndView aboutPage(HttpServletRequest request, @PathVariable("id") String id) {
+		request.getSession().setAttribute("userid", id);
 		return new ModelAndView("/about");
 	}
-	
-	
+
+	@RequestMapping(value = "/about")
+	public ModelAndView viewAbout(HttpServletRequest request) {
+		return new ModelAndView("/about");
+	}
 }

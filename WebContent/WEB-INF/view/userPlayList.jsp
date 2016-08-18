@@ -43,7 +43,7 @@
 			<ul class="navbar-nav nav">
 				<li><a href="init">Create Playlist</a></li>
 				<li><a href="userPlayList">View Playlists</a></li>
-				<li><a href="about">About Us</a></li>
+				<li><a href="about">Team Chorizo</a></li>
 			</ul>
 			</nav>
 			<div class="row">
